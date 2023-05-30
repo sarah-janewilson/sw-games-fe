@@ -1,4 +1,5 @@
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 
 function ReviewCard({ review }) {
   return (
@@ -8,6 +9,7 @@ function ReviewCard({ review }) {
       <Card.Body>
         <Card.Title>Review title: {review.title}</Card.Title>
         <Card.Subtitle>Reviewed by: {review.owner}</Card.Subtitle>
+        <Link to={`/reviews/${review.review_id}`}>View Full Review</Link>
       </Card.Body>
     </Card>
     </article>
