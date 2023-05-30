@@ -5,6 +5,42 @@
   text-align: center;
 }
 
+.header {
+  border: 3px solid pink;
+  margin: 10px;
+  padding: 5px;
+}
+
+.nav {
+  border: 3px solid red;
+  margin: 10px;
+  padding: 5px;
+}
+
+.home {
+  border: 3px solid purple;
+  margin: 10px;
+  padding: 5px;
+}
+
+.review-list {
+  border: 3px solid orange;
+  margin: 10px;
+  padding: 5px;
+}
+
+.review-card {
+  border: 3px solid grey;
+  margin: 10px;
+  padding: 5px;
+}
+
+.category-list {
+  border: 3px solid green;
+  margin: 10px;
+  padding: 5px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
