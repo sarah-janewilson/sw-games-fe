@@ -1,0 +1,56 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.header {
+  border: 3px solid pink;
+  margin: 10px;
+  padding: 5px;
+}
+
+.nav {
+  border: 3px solid red;
+  margin: 10px;
+  padding: 5px;
+}
+
+.home {
+  border: 3px solid purple;
+  margin: 10px;
+  padding: 5px;
+}
+
+.review-list {
+  margin: 10px;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.review-card-container {
+  background: #df9e9a;
+  padding: 2rem;
+  margin: 1rem;
+  flex-basis: calc(33.33% - 2rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card-container .card {
+  flex-grow: 1;
+}
+
+.review-img {
+  width: 300px;
+  height: auto;
+}
+
+.category-list {
+  border: 3px solid green;
+  margin: 10px;
+  padding: 5px;
+}
