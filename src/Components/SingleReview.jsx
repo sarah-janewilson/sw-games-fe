@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchSingleReview } from "../api";
+import { fetchSingleReview, voteOnSingleReview } from "../api";
 import CommentList from "./CommentList";
 
 function SingleReview() {
   const [currentReview, setCurrentReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [errMessage, setErrMessage] = useState("");
   const { review_id } = useParams();
 
   useEffect(() => {
@@ -19,8 +20,22 @@ function SingleReview() {
     return <p>Loading...</p>;
   }
 
+  const handleVote = (increment) => {
+    const updatedReview = {
+      ...currentReview,
+      votes: increment ? currentReview.votes + 1 : currentReview.votes - 1,
+    };
+    setCurrentReview(updatedReview);
+    voteOnSingleReview(review_id, increment).catch((err) => {
+      setCurrentReview(currentReview);
+      setErrMessage("Error occurred while voting.");
+      console.err(err);
+    });
+  };
+
   return (
     <article>
+      {errMessage && <p>{errMessage}</p>}
       <h2>{currentReview.title}</h2>
       <p>Game designed by: {currentReview.designer}</p>
       <p>Game category: {currentReview.category}</p>
@@ -35,6 +50,14 @@ function SingleReview() {
         {currentReview.owner}'s review: {currentReview.review_body}
       </p>
       <p>This review currently has {currentReview.votes} votes.</p>
+      <section className="vote-button-container">
+        <button className="upvote-button" onClick={() => handleVote(true)}>
+          Upvote 👍
+        </button>
+        <button className="downvote-button" onClick={() => handleVote(false)}>
+          Downvote 👎
+        </button>
+      </section>
       <CommentList review_id={review_id} />
     </article>
   );

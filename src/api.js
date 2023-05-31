@@ -24,3 +24,13 @@ export const fetchCommentsByReviewId = (review_id) => {
     .then((response) => response.data)
     .catch((err) => console.log(err));
 };
+
+export const voteOnSingleReview = (review_id, increment) => {
+  const patchVotes = {
+    inc_votes: increment ? 1 : -1,
+  };
+  return gamesApi
+    .patch(`/reviews/${review_id}/`, patchVotes)
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
+};
