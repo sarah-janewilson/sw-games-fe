@@ -27,15 +27,13 @@ function SingleReview() {
     };
     setCurrentReview(updatedReview);
     voteOnSingleReview(review_id, increment).catch((err) => {
-      setCurrentReview(currentReview);
-      setErrMessage("Error occurred while voting.");
-      console.err(err);
+      setErrMessage("Error occurred while voting. Your vote has not been counted. Please refresh the page and try again.");
+      console.log(err);
     });
   };
 
   return (
     <article>
-      {errMessage && <p>{errMessage}</p>}
       <h2>{currentReview.title}</h2>
       <p>Game designed by: {currentReview.designer}</p>
       <p>Game category: {currentReview.category}</p>
@@ -57,6 +55,7 @@ function SingleReview() {
         <button className="downvote-button" onClick={() => handleVote(false)}>
           Downvote 👎
         </button>
+        {errMessage && <p className="err-message">{errMessage}</p>}
       </section>
       <CommentList review_id={review_id} />
     </article>

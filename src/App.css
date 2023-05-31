@@ -88,6 +88,10 @@
   margin: 10px;
 }
 
+.err-message {
+  color: red
+}
+
 ul {
   padding: 0;
 }

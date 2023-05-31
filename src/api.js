@@ -32,5 +32,8 @@ export const voteOnSingleReview = (review_id, increment) => {
   return gamesApi
     .patch(`/reviews/${review_id}/`, patchVotes)
     .then((response) => response.data)
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      throw err;
+    });
 };
