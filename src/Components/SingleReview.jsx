@@ -1,16 +1,23 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchSingleReview } from "../api";
+import CommentList from "./CommentList";
 
 function SingleReview() {
   const [currentReview, setCurrentReview] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const { review_id } = useParams();
 
   useEffect(() => {
-    fetchSingleReview(review_id)
-      .then((review) => setCurrentReview(review))
-      .catch((error) => console.log(error));
+    fetchSingleReview(review_id).then((review) => {
+      setCurrentReview(review);
+      setIsLoading(false);
+    });
   }, [review_id]);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <article>
@@ -28,6 +35,7 @@ function SingleReview() {
         {currentReview.owner}'s review: {currentReview.review_body}
       </p>
       <p>This review currently has {currentReview.votes} votes.</p>
+      <CommentList review_id={review_id} />
     </article>
   );
 }

@@ -17,3 +17,10 @@ export const fetchSingleReview = (review_id) => {
     .then((response) => response.data)
     .catch((err) => console.log(err));
 };
+
+export const fetchCommentsByReviewId = (review_id) => {
+  return gamesApi
+    .get(`/reviews/${review_id}/comments`)
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
+};
