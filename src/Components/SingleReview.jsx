@@ -26,9 +26,8 @@ function SingleReview() {
       votes: increment ? currentReview.votes + 1 : currentReview.votes - 1,
     };
     setCurrentReview(updatedReview);
-    voteOnSingleReview(review_id, increment).catch((err) => {
+    voteOnSingleReview(review_id, increment).catch(() => {
       setErrMessage("Error occurred while voting. Your vote has not been counted. Please refresh the page and try again.");
-      console.log(err);
     });
   };
 

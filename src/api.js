@@ -8,21 +8,18 @@ export const fetchReviews = () => {
   return gamesApi
     .get(`/reviews`)
     .then((response) => response.data)
-    .catch((err) => console.log(err));
 };
 
 export const fetchSingleReview = (review_id) => {
   return gamesApi
     .get(`/reviews/${review_id}`)
     .then((response) => response.data)
-    .catch((err) => console.log(err));
 };
 
 export const fetchCommentsByReviewId = (review_id) => {
   return gamesApi
     .get(`/reviews/${review_id}/comments`)
     .then((response) => response.data)
-    .catch((err) => console.log(err));
 };
 
 export const voteOnSingleReview = (review_id, increment) => {
@@ -33,7 +30,6 @@ export const voteOnSingleReview = (review_id, increment) => {
     .patch(`/reviews/${review_id}/`, patchVotes)
     .then((response) => response.data)
     .catch((err) => {
-      console.log(err);
       throw err;
     });
 };
