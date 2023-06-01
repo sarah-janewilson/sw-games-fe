@@ -5,7 +5,9 @@ function CommentCard({ comment }) {
     <article className="comment-card-container">
       <Card>
         <Card.Body>
-        <Card.Text>{comment.author} says: "{comment.body}"</Card.Text>
+          <Card.Text>
+            {comment.author} says: "{comment.body}"
+          </Card.Text>
           <Card.Text>Commented at: {comment.created_at}</Card.Text>
           <Card.Text>Comment votes: {comment.votes}</Card.Text>
         </Card.Body>
