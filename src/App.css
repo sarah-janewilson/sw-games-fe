@@ -66,6 +66,10 @@
   height: auto;
 }
 
+.comment-section {
+  border: 3px solid orange;
+}
+
 .comment-list {
   border: 3px solid grey;
   margin: 10px;
@@ -79,7 +83,7 @@
 }
 
 .upvote-button {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   margin: 10px;
 }
 
@@ -89,7 +93,54 @@
 }
 
 .err-message {
-  color: red
+  color: red;
+}
+
+.user-list {
+  margin: 10px;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.user-card-container {
+  background: #faedcc;
+  padding: 2rem;
+  margin: 1rem;
+  flex-basis: calc(33.33% - 2rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.user-card-container .user-card {
+  flex-grow: 1;
+}
+
+.user-img {
+  width: 100px;
+  height: auto;
+}
+
+.nav {
+  background-color: #feeff9;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.nav a {
+  color: #000ba8;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.nav a:hover {
+  color: #007bff;
+}
+
+.nav-logged-in-user {
+  margin-left: auto;
 }
 
 ul {

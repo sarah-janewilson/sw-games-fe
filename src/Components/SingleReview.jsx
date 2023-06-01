@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchSingleReview, voteOnSingleReview } from "../api";
-import CommentList from "./CommentList";
+import CommentSection from "./CommentSection";
 
-function SingleReview() {
+function SingleReview({ loggedInUser }) {
   const [currentReview, setCurrentReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [errMessage, setErrMessage] = useState("");
@@ -27,7 +27,9 @@ function SingleReview() {
     };
     setCurrentReview(updatedReview);
     voteOnSingleReview(review_id, increment).catch(() => {
-      setErrMessage("Error occurred while voting. Your vote has not been counted. Please refresh the page and try again.");
+      setErrMessage(
+        "Error occurred while voting. Your vote has not been counted. Please refresh the page and try again."
+      );
     });
   };
 
@@ -56,7 +58,11 @@ function SingleReview() {
         </button>
         {errMessage && <p className="err-message">{errMessage}</p>}
       </section>
-      <CommentList review_id={review_id} />
+      <CommentSection
+        review_id={review_id}
+        loggedInUser={loggedInUser}
+        setErrMessage={setErrMessage}
+      />
     </article>
   );
 }
