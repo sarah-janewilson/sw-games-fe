@@ -1,7 +1,32 @@
+import { fetchCategories } from "../api";
+import { useState, useEffect } from "react";
+import CategoryCard from "./CategoryCard";
+
 function CategoryList() {
-    return (
-      <p className="category-list">This will be the Category List.</p>
-    );
+  const [currentCategories, setCurrentCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchCategories().then((categories) => {
+      setCurrentCategories(categories);
+      setIsLoading(false);
+    });
+  }, []);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
   }
-  
-  export default CategoryList;
+
+  return (
+    <section>
+      <h2>All categories</h2>
+      <ul className="category-list">
+        {currentCategories.map((category, index) => {
+          return <CategoryCard key={index} category={category} />;
+        })}
+      </ul>
+    </section>
+  );
+}
+
+export default CategoryList;

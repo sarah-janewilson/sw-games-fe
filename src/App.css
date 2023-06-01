@@ -92,6 +92,18 @@
   color: red
 }
 
+.category-list {
+  border: 3px solid grey;
+  margin: 10px;
+  padding: 5px;
+}
+
+.category-card-container {
+  background: #fff7e4;
+  padding: 0.5rem;
+  margin: 1rem;
+}
+
 ul {
   padding: 0;
 }

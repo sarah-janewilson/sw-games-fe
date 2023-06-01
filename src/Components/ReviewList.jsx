@@ -1,17 +1,23 @@
 import { fetchReviews } from "../api";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
 
 function ReviewList() {
   const [currentReviews, setCurrentReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    fetchReviews().then((reviews) => {
-      setCurrentReviews(reviews);
-      setIsLoading(false);
-    });
-  }, []);
+    const fetchReviewsByCategory = () => {
+      setIsLoading(true);
+      fetchReviews(searchParams.get("category")).then((reviews) => {
+        setCurrentReviews(reviews);
+        setIsLoading(false);
+      });
+    };
+    fetchReviewsByCategory();
+  }, [searchParams]);
 
   if (isLoading) {
     return <p>Loading...</p>;
