@@ -55,8 +55,6 @@ function ReviewList() {
         <select id="sort-order" value={sortBy} onChange={handleSortByChange}>
           <option value="created_at">Date Reviewed</option>
           <option value="votes">Votes</option>
-          <option value="owner">Review Author</option>
-          <option value="designer">Game Designer</option>
         </select>
 
         <label htmlFor="sort-direction">Sort by:</label>
