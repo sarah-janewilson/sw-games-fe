@@ -28,7 +28,20 @@ export const voteOnSingleReview = (review_id, increment) => {
     inc_votes: increment ? 1 : -1,
   };
   return gamesApi
-    .patch(`/reviews/${review_id}/`, patchVotes)
+    .patch(`/reviews/${review_id}`, patchVotes)
+    .then((response) => response.data)
+    .catch((err) => {
+      throw err;
+    });
+};
+
+export const fetchUsers = () => {
+  return gamesApi.get(`/users`).then((response) => response.data);
+};
+
+export const postComment = (review_id, commentData) => {
+  return gamesApi
+    .post(`/reviews/${review_id}/comments`, commentData)
     .then((response) => response.data)
     .catch((err) => {
       throw err;
