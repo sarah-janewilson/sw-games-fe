@@ -30,9 +30,6 @@ export const voteOnSingleReview = (review_id, increment) => {
   return gamesApi
     .patch(`/reviews/${review_id}`, patchVotes)
     .then((response) => response.data)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const fetchUsers = () => {
@@ -43,9 +40,6 @@ export const postComment = (review_id, commentData) => {
   return gamesApi
     .post(`/reviews/${review_id}/comments`, commentData)
     .then((response) => response.data)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const fetchCategories = () => {
