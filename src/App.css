@@ -168,6 +168,14 @@
   flex-grow: 1;
 }
 
+.order-options label {
+  margin-right: 0.5rem;
+}
+
+.order-options select {
+  margin-right: 1rem;
+}
+
 ul {
   padding: 0;
 }
