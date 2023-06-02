@@ -4,8 +4,11 @@ const gamesApi = axios.create({
   baseURL: `https://sarah-nc-games.onrender.com/api`,
 });
 
-export const fetchReviews = () => {
-  return gamesApi.get(`/reviews`).then((response) => response.data);
+export const fetchReviews = (categorySlug) => {
+  const queryParams = categorySlug ? `?category=${categorySlug}` : "";
+  return gamesApi
+    .get(`/reviews${queryParams}`)
+    .then((response) => response.data);
 };
 
 export const fetchSingleReview = (review_id) => {
@@ -43,4 +46,8 @@ export const postComment = (review_id, commentData) => {
     .catch((err) => {
       throw err;
     });
+};
+
+export const fetchCategories = () => {
+  return gamesApi.get(`/categories`).then((response) => response.data);
 };
