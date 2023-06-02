@@ -4,8 +4,8 @@ const gamesApi = axios.create({
   baseURL: `https://sarah-nc-games.onrender.com/api`,
 });
 
-export const fetchReviews = (categorySlug) => {
-  const queryParams = categorySlug ? `?category=${categorySlug}` : "";
+export const fetchReviews = (categorySlug, sortBy, order) => {
+  const queryParams = categorySlug ? `?category=${categorySlug}&sort_by=${sortBy}&order=${order}` : `?sort_by=${sortBy}&order=${order}`;
   return gamesApi
     .get(`/reviews${queryParams}`)
     .then((response) => response.data);
