@@ -23,9 +23,11 @@ function ReviewList() {
     return <p>Loading...</p>;
   }
 
+  const category = searchParams.get("category");
+
   return (
     <section>
-      <h2>All reviews</h2>
+      <h2>{ category ? `All ${category} reviews` : "All reviews"}</h2>
       <ul className="review-list">
         {currentReviews.map((review, index) => {
           return <ReviewCard key={index} review={review} />;
